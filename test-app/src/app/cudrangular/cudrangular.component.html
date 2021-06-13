@@ -1,0 +1,226 @@
+<label for="name">Nombre del Cuadrangular: </label>
+<input id="name" [(ngModel)]="cuad.name" placeholder="name"><br><br>
+
+<h2>{{cuad.name | uppercase}}</h2>
+<div>
+    <span>Equipos: </span>{{cuad.equipos[0][0]}},{{cuad.equipos[0][1]}},{{cuad.equipos[0][2]}},{{cuad.equipos[0][3]}}
+</div>
+<br>
+<div>
+    <ul>
+        <li *ngFor="let a of cuad.equipos[0] | slice:1:4; let index = index"> 
+            Partido {{ index+1 }}: a vs {{ a }}<br>
+            <input type="number" id="eq1" [(ngModel)]="cuad.marcador[index][0]" placeholder="goles">
+            <input type="number" id="eq2" [(ngModel)]="cuad.marcador[index][1]" placeholder="goles">
+            <ul>
+                <li>{{cuad.marcador[index][0]}}</li>
+                <li>{{cuad.marcador[index][1]}}</li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul>
+        <li *ngFor="let a of cuad.equipos[0] | slice:2:4; let index = index"> 
+            Partido {{ index+4 }}: b vs {{ a }}<br>
+            <input type="number" id="eq1" [(ngModel)]="cuad.marcador[index+3][0]" placeholder="goles">
+            <input type="number" id="eq2" [(ngModel)]="cuad.marcador[index+3][1]" placeholder="goles">
+            <ul>
+                <li>{{cuad.marcador[index+3][0]}}</li>
+                <li>{{cuad.marcador[index+3][1]}}</li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul>
+        <li *ngFor="let a of cuad.equipos[0] | slice:3:4; let index = index"> 
+            Partido {{ index+6 }}: c vs {{ a }}<br>
+            <input type="number" id="eq1" [(ngModel)]="cuad.marcador[index+5][0]" placeholder="goles">
+            <input type="number" id="eq2" [(ngModel)]="cuad.marcador[index+5][1]" placeholder="goles">
+            <ul>
+                <li>{{cuad.marcador[index+5][0]}}</li>
+                <li>{{cuad.marcador[index+5][1]}}</li>
+            </ul>
+        </li>
+        <!--<p>{{cuad.marcador}}</p>-->
+    </ul>
+
+    <ul>
+        Marcadores
+        <li>a ({{cuad.marcador[0][0]}}) : b ({{cuad.marcador[0][1]}})</li>
+        <li>a ({{cuad.marcador[1][0]}}) : c ({{cuad.marcador[1][1]}})</li>
+        <li>a ({{cuad.marcador[2][0]}}) : d ({{cuad.marcador[2][1]}})</li>
+        <li>b ({{cuad.marcador[3][0]}}) : c ({{cuad.marcador[3][1]}})</li>
+        <li>b ({{cuad.marcador[4][0]}}) : d ({{cuad.marcador[4][1]}})</li>
+        <li>c ({{cuad.marcador[5][0]}}) : d ({{cuad.marcador[5][1]}})</li><br>
+        <!--Marcador
+        <li *ngFor="let a of cuad.marcador; let index=index"> {{ a[index] }} </li>-->
+    </ul>
+</div>
+
+<div>
+    <h3>Partidos Jugados (puntajes)</h3>
+
+    <div *ngIf="cuad.marcador[0][0]>cuad.marcador[0][1]; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>(a ganó b.
+        {{cuad.equipos[2][0] = '3'}}
+        {{cuad.equipos[1][1] = '0'}})
+    </ng-template>
+    <ng-template #elseBlock>
+        <div *ngIf="cuad.marcador[0][0]<cuad.marcador[0][1]; else ab">(b ganó a.
+            {{cuad.equipos[2][0] = '0'}}
+            {{cuad.equipos[1][1] = '3'}})
+        </div>
+    <ng-template #ab>(a empató b.
+        {{cuad.equipos[2][0] = '1'}}
+        {{cuad.equipos[1][1] = '1'}})
+    </ng-template>
+    </ng-template>
+
+    <div *ngIf="cuad.marcador[1][0]>cuad.marcador[1][1]; then thenBlock1 else elseBlock1"></div>
+    <ng-template #thenBlock1>(a ganó c.
+        {{cuad.equipos[3][0] = '3'}}
+        {{cuad.equipos[1][2] = '0'}})
+    </ng-template>
+    <ng-template #elseBlock1>
+        <div *ngIf="cuad.marcador[1][0]<cuad.marcador[1][1]; else ac">(c ganó a.
+            {{cuad.equipos[3][0] = '0'}}
+            {{cuad.equipos[1][2] = '3'}})
+        </div>
+    <ng-template #ac>(a empató c.
+        {{cuad.equipos[3][0] = '1'}}
+        {{cuad.equipos[1][2] = '1'}})
+    </ng-template>
+    </ng-template>
+
+    <div *ngIf="cuad.marcador[2][0]>cuad.marcador[2][1]; then thenBlock2 else elseBlock2"></div>
+    <ng-template #thenBlock2>(a ganó d.
+        {{cuad.equipos[4][0] = '3'}}
+        {{cuad.equipos[1][3] = '0'}})
+    </ng-template>
+    <ng-template #elseBlock2>
+        <div *ngIf="cuad.marcador[2][0]<cuad.marcador[2][1]; else ad">(d ganó a.
+            {{cuad.equipos[4][0] = '0'}}
+            {{cuad.equipos[1][3] = '3'}})
+        </div>
+    <ng-template #ad>(a empató d.
+        {{cuad.equipos[4][0] = '1'}}
+        {{cuad.equipos[1][3] = '1'}})
+    </ng-template>
+    </ng-template>
+
+    <div *ngIf="cuad.marcador[3][0]>cuad.marcador[3][1]; then thenBlock3 else elseBlock3"></div>
+    <ng-template #thenBlock3>(b ganó c.
+        {{cuad.equipos[3][1] = '3'}}
+        {{cuad.equipos[2][2] = '0'}})
+    </ng-template>
+    <ng-template #elseBlock3>
+        <div *ngIf="cuad.marcador[3][0]<cuad.marcador[3][1]; else bc">(c ganó b.
+            {{cuad.equipos[3][1] = '0'}}
+            {{cuad.equipos[2][2] = '3'}})
+        </div>
+    <ng-template #bc>(b empató c.
+        {{cuad.equipos[3][1] = '1'}}
+        {{cuad.equipos[2][2] = '1'}})
+    </ng-template>
+    </ng-template>
+
+    <div *ngIf="cuad.marcador[4][0]>cuad.marcador[4][1]; then thenBlock4 else elseBlock4"></div>
+    <ng-template #thenBlock4>(b ganó d.
+        {{cuad.equipos[4][1] = '3'}}
+        {{cuad.equipos[2][3] = '0'}})
+    </ng-template>
+    <ng-template #elseBlock4>
+        <div *ngIf="cuad.marcador[4][0]<cuad.marcador[4][1]; else bd">(d ganó b.
+            {{cuad.equipos[4][1] = '0'}}
+            {{cuad.equipos[2][3] = '3'}})
+        </div>
+    <ng-template #bd>(b empató d.
+        {{cuad.equipos[4][1] = '1'}}
+        {{cuad.equipos[2][3] = '1'}})
+    </ng-template>
+    </ng-template>
+
+    <div *ngIf="cuad.marcador[5][0]>cuad.marcador[5][1]; then thenBlock5 else elseBlock5"></div>
+    <ng-template #thenBlock5>(c ganó d.
+        {{cuad.equipos[4][2] = '3'}}
+        {{cuad.equipos[3][3] = '0'}})
+    </ng-template>
+    <ng-template #elseBlock5>
+        <div *ngIf="cuad.marcador[5][0]<cuad.marcador[5][1]; else cd">(d ganó c.
+            {{cuad.equipos[4][2] = '0'}}
+            {{cuad.equipos[3][3] = '3'}})
+        </div>
+    <ng-template #cd>(c empató d.
+        {{cuad.equipos[4][2] = '1'}}
+        {{cuad.equipos[3][3] = '1'}})
+    </ng-template>
+    </ng-template>
+</div>
+
+<br>
+<div>
+    <h3>Tabla de puntajes</h3>
+    <table class="table table-striped">
+        <tr>
+            <th *ngFor="let a of cuad.equipos[0]">{{a}}</th>
+        </tr>
+        <tr>
+            <td *ngFor="let a of cuad.equipos[1]">{{a}}</td>
+        </tr>
+        <tr>
+            <td *ngFor="let a of cuad.equipos[2]">{{a}}</td>
+        </tr>
+        <tr>
+            <td *ngFor="let a of cuad.equipos[3]">{{a}}</td>
+        </tr>
+        <tr>
+            <td *ngFor="let a of cuad.equipos[4]">{{a}}</td>
+        </tr>
+        <tr>
+            <th *ngFor="let a of cuad.puntos">{{a}}</th>
+        </tr>
+    </table>
+</div>
+
+<div *ngFor="let a of [].constructor(4); let i=index" ng-cloak>
+    {{cuad.puntos[i] = 0}}
+</div>
+
+<div *ngFor="let a of [].constructor(4); let index=index" ng-cloak>
+    {{cuad.puntos[0] = cuad.puntos[0] + (+cuad.equipos[index+1][0])}}
+</div>
+
+<div *ngFor="let a of [].constructor(4); let index=index" ng-cloak>
+    {{cuad.puntos[1] = cuad.puntos[1] + (+cuad.equipos[index+1][1])}}
+</div>
+
+<div *ngFor="let a of [].constructor(4); let index=index" ng-cloak>
+    {{cuad.puntos[2] = cuad.puntos[2] + (+cuad.equipos[index+1][2])}}
+</div>
+
+<div *ngFor="let a of [].constructor(4); let index=index" ng-cloak>
+    {{cuad.puntos[3] = cuad.puntos[3] + (+cuad.equipos[index+1][3])}}
+</div>
+
+<!--<ul>
+    <li *ngFor="let a of cuad.equipos; let index = index"> {{ a }} </li>
+</ul>-->
+
+<!--<label for="part1">Partido1: a vs b </label><br>
+<input *ngFor="let a of cuad.equipos[1] | slice:0:2; let index = index" 
+    id="part1" [(ngModel)]="cuad.equipos[1][index]" placeholder="goles">
+<br>
+<br>
+<label for="part2">Partido2: c vs d </label><br>
+<input *ngFor="let a of cuad.equipos[1] | slice:2:4; let index = index" 
+    id="part2" [(ngModel)]="cuad.equipos[1][index+2]" placeholder="goles">-->
+
+<!--<div *ngFor="let a of cuad.marcador; let index=index">
+Marcador
+{{a}}
+{{cuad.marcador[5]}}
+</div>-->
+
+<!--<div>
+    <span>id: </span>{{cuad.id}}
+</div>-->
