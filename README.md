@@ -1,5 +1,7 @@
 # TestApp
 
+La carpeta __node_module__ del proyecto no ha sido cargada en el repositorio por lo cual, para correr el projecto en forma local se deberá configuar el respectivo ambiente (comando __nmp install__ y comando __ng serve__).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
 
 ## Development server
