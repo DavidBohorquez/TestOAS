@@ -1,0 +1,14 @@
+REM INSERTING into CUADRANGULAR, EQUIPO, CUADRANGULAR_EQUIPO, PARTIDO
+Insert into CUADRANGULAR (K_ID,N_NAME) values ('1','UD Tournament');
+
+Insert into EQUIPO (K_ID,N_NAME,Q_PUNTOS) values ('101','a',0);
+Insert into EQUIPO (K_ID,N_NAME,Q_PUNTOS) values ('102','b',0);
+Insert into EQUIPO (K_ID,N_NAME,Q_PUNTOS) values ('103','c',0);
+Insert into EQUIPO (K_ID,N_NAME,Q_PUNTOS) values ('104','d',0);
+
+Insert into CUADRANGULAR_EQUIPO (K_ID_CUAGRANGULAR,K_ID_EQUIPO) values ('1','101');
+Insert into CUADRANGULAR_EQUIPO (K_ID_CUAGRANGULAR,K_ID_EQUIPO) values ('1','102');
+Insert into CUADRANGULAR_EQUIPO (K_ID_CUAGRANGULAR,K_ID_EQUIPO) values ('1','103');
+Insert into CUADRANGULAR_EQUIPO (K_ID_CUAGRANGULAR,K_ID_EQUIPO) values ('1','104');
+
+Insert into PARTIDO (K_EQUIPO1_ID,K_EQUIPO2_ID,Q_GOL_EQ1,Q_GOL_EQ2,O_OBSERVACION,F_PARTIDO,Q_HORA,N_LUGAR) values ('101','102',2,1,null,sysdate,'14:00','Campín');
